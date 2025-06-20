@@ -35,6 +35,7 @@ class Peminjaman extends BaseController
         $modelPeminjaman = new M_Peminjaman();
         $uri = service('uri');
         $page = $uri->getSegment(2);
+        $dataBuku = $modelBuku->getDataBuku(['tbl_buku.is_delete_buku' => '0'])->getResultArray();
 
         if($this->request->getPost('id_anggota')){
             $idAnggota = $this->request->getPost('id_anggota');
@@ -126,6 +127,7 @@ class Peminjaman extends BaseController
         $dataQr = $idPeminjaman;
         $labelQr = $idPeminjaman;
         $result = Builder::create()
+        
             ->writer(new PngWriter())
             ->writerOptions([])
             ->data($dataQr)
@@ -142,7 +144,6 @@ class Peminjaman extends BaseController
             ->labelAlignment(LabelAlignment::Center)
             ->validateResult(false)
             ->build();
-        header('Content-Type: '.$result->getMimeType());
         $namaQR = "qr_" . $idPeminjaman . ".png";
         $result->saveToFile(FCPATH . 'Assets/qr_code/' . $namaQR);
 
@@ -177,6 +178,21 @@ class Peminjaman extends BaseController
             document.location = "<?= base_url('peminjaman/data-transaksi-peminjaman'); ?>";
         </script>
         <?php
+    }
+
+    public function data_peminjaman(){
+        $modelPeminjaman = new M_Peminjaman;
+        $uri = service('uri');
+        $page = $uri->getSegment(2);
+        $dataPeminjaman = $modelPeminjaman->getDataPeminjamanJoin()->getResultArray();
+        $data['page'] = $page;
+        $data['web_title'] = "Data Transaksi Peminjaman";
+        $data['data_peminjaman'] = $dataPeminjaman;
+
+        echo view('Backend/Template/header', $data);
+        echo view('Backend/Template/sidebar', $data);
+        echo view('Backend/Transaksi/data-transaksi-peminjaman', $data);
+        echo view('Backend/Template/footer', $data);
     }
 }
 

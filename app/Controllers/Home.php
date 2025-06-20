@@ -89,5 +89,15 @@ class Home extends BaseController
         return view('gd');
     }
 
+    public function gdh(){
+        
+$img = imagecreatetruecolor(100, 100);
+$warna = imagecolorallocate($img, 255, 0, 0);
+imagefilledrectangle($img, 0, 0, 100, 100, $warna);
+header('Content-Type: image/png');
+imagepng($img);
+imagedestroy($img);
+
+    }
     
 }

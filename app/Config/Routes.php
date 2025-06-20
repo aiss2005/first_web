@@ -16,6 +16,7 @@ $routes->get('/home/ya','Home::looping');
 $routes->get('/home/haha','Home::percabangan');
 $routes->get('/info','Home::info');
 $routes->get('/gd','Home::gd');
+$routes->get('/gdh','Home::gdh');
 
 //admin
 $routes->get('/admin/login-admin','Admin::login');
@@ -73,3 +74,6 @@ $routes->post('/peminjaman/peminjaman-step-2','Peminjaman::peminjaman_step2');
 $routes->get('/peminjaman/peminjaman-step-2','Peminjaman::peminjaman_step2');
 $routes->get('/peminjaman/simpan-temp-pinjam/(:alphanum)','Peminjaman::simpan_temp_peminjaman/$1');
 $routes->get('/peminjaman/simpan-transaksi-peminjaman','Peminjaman::simpan_transaksi_peminjaman');
+$routes->get('/peminjaman/hapus-temp/(:alphanum)','Peminjaman::hapus_peminjaman/$1');
+$routes->get('/peminjaman/simpan-transaksi-peminjaman','Peminjaman::simpan_transaksi_peminjaman');
+$routes->get('/peminjaman/data-transaksi-peminjaman','Peminjaman::data_peminjaman');

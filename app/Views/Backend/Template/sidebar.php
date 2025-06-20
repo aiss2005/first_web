@@ -31,6 +31,11 @@
 							<span class="glyphicon glyphicon-share-alt"></span> Data Buku
 						</a>
 					</li>
+					<li>
+						<a href="<?= base_url('peminjaman/peminjaman-step-1');?>">
+							<span class="glyphicon glyphicon-share-alt"></span> Peminjaman Buku
+						</a>
+					</li>
 				</ul>
 			</li>
 			<li role="presentation" class="divider"></li>
