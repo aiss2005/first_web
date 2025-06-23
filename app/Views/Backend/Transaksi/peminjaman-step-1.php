@@ -17,7 +17,12 @@
                     <form action="<?= base_url('peminjaman/peminjaman-step-2'); ?>" method="post">
                         <div class="form-group col-md-6">
                             <label>ID Anggota</label>
-                            <input type="text" class="form-control" name="id_anggota" placeholder="Masukan ID Anggota" required="required">
+                            <select name="id_anggota" id="id_anggota" class="form-control">
+                            <option value="">-- Pilih ID Anggota --</option>
+                            <?php foreach ($dataAnggota as $a): ?>
+                                <option value="<?= $a['id_anggota']; ?>"><?= esc($a['id_anggota']); ?></option>
+                            <?php endforeach; ?>
+                        </select>
                         </div>
                         <div style="clear:both;"></div>
 

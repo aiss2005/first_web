@@ -19,6 +19,9 @@ class Peminjaman extends BaseController
     public function peminjaman_step1(){
         $uri = service('uri');
         $page = $uri->getSegment(2);
+        $modelAnggota = new M_Anggota();
+        $dataAnggota = $modelAnggota->getDataAnggota(['tbl_anggota.is_delete_anggota' => '0'])->getResultArray();
+        $data['dataAnggota'] = $dataAnggota;
 
         $data['page'] = $page;
         $data['web_title'] = "Transaksi Peminjaman Buku";
@@ -52,7 +55,7 @@ class Peminjaman extends BaseController
         }
         else{
             $dataAnggota = $modelAnggota->getDataAnggota(['id_anggota' => $idAnggota])->getRowArray();
-            $dataBuku = $modelBuku->getDataBukuJoin()->getResultArray();
+            $dataBuku = $modelBuku->getDataBukuJoin(['tbl_buku.is_delete_buku' => '0'])->getResultArray();
             $jumlahTemp = $modelPeminjaman->getDataTemp(['id_anggota' => $idAnggota])->getNumRows();
             $data['jumlahTemp'] = $jumlahTemp;
             $dataTemp = $modelPeminjaman->getDataTempJoin(['tbl_temp_peminjaman.id_anggota' => $idAnggota])->getResultArray();
@@ -192,6 +195,22 @@ class Peminjaman extends BaseController
         echo view('Backend/Template/header', $data);
         echo view('Backend/Template/sidebar', $data);
         echo view('Backend/Transaksi/data-transaksi-peminjaman', $data);
+        echo view('Backend/Template/footer', $data);
+    }
+
+    public function detail_peminjaman(){
+        $uri = service('uri');
+        $idPeminjaman = $uri ->getSegment(3);
+        $modelPeminjaman = new M_Peminjaman;
+        $dataPeminjaman = $modelPeminjaman->getDataPeminjamanJoin(['sha1(no_peminjaman)' => $idPeminjaman])->getResultArray();
+        
+        $page = $uri->getSegment(2);
+        $data['page'] = $page;
+        $data['web_title'] = "Detail Transaksi Peminjaman";
+        $data['data_peminjaman'] = $dataPeminjaman;
+        echo view('Backend/Template/header', $data);
+        echo view('Backend/Template/sidebar', $data);
+        echo view('Backend/Transaksi/detail-transaksi', $data);
         echo view('Backend/Template/footer', $data);
     }
 }

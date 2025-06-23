@@ -32,7 +32,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="<?= base_url('peminjaman/peminjaman-step-1');?>">
+						<a href="<?= base_url('/peminjaman/data-transaksi-peminjaman');?>">
 							<span class="glyphicon glyphicon-share-alt"></span> Peminjaman Buku
 						</a>
 					</li>

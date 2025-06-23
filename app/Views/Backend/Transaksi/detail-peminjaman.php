@@ -2,7 +2,7 @@
     <div class="row">
         <ol class="breadcrumb">
             <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
-            <li class="active">Transaksi Peminjaman Buku</li>
+            <li class="active">Detail Peminjaman Buku</li>
         </ol>
     </div><!--/.row-->
 
@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <h3>Transaksi Peminjaman Buku
+                    <h3>Detail Peminjaman Buku
                         <a href="<?= base_url('peminjaman/peminjaman-step-1'); ?>"><button type="button" class="btn btn-sm btn-primary pull-right">Input Transaksi</button></a>
                     </h3>
                     <hr />
@@ -18,6 +18,7 @@
                         <thead>
                             <tr>
                                 <th data-sortable="true">No Peminjaman</th>
+                                <th data-sortable="true">ID Anggota</th>
                                 <th data-sortable="true">Nama Anggota</th>
                                 <th data-sortable="true">Tanggal Peminjaman</th>
                                 <th data-sortable="true">Total Buku Yang Dipinjam</th>
@@ -32,7 +33,8 @@
                             foreach ($data_peminjaman as $data) {
                             ?>
                             <tr>
-                                <td data-sortable="true"><?= $data['no_peminjaman']; ?></td>
+                                <td data-sortable="true"><?= $data['no_peminjaman']; ?> </td>
+                                <td data-sortable="true"><?= $data['id_anggota']; ?> </td>
                                 <td data-sortable="true"><?= $data['nama_anggota']; ?></td>
                                 <td data-sortable="true"><?= $data['tgl_pinjam']; ?></td>
                                 <td data-sortable="true"><?= $data['total_pinjam']; ?></td>
@@ -45,7 +47,7 @@
                                     <?php } ?>                                                                            
                                 </td>
                                 <td>
-                                    <a href="<?= base_url('peminjaman/detail-transaksi-peminjaman/') . sha1($data['no_peminjaman']); ?>"><button type="button" class="btn btn-sm btn-primary pull-right">Detail</button></a>
+                                    opsi
                                 </td>
                             </tr>
                             <?php } ?>

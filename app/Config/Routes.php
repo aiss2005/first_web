@@ -77,3 +77,4 @@ $routes->get('/peminjaman/simpan-transaksi-peminjaman','Peminjaman::simpan_trans
 $routes->get('/peminjaman/hapus-temp/(:alphanum)','Peminjaman::hapus_peminjaman/$1');
 $routes->get('/peminjaman/simpan-transaksi-peminjaman','Peminjaman::simpan_transaksi_peminjaman');
 $routes->get('/peminjaman/data-transaksi-peminjaman','Peminjaman::data_peminjaman');
+$routes->get('/peminjaman/detail-transaksi-peminjaman/(:alphanum)','Peminjaman::detail_peminjaman/$1');
