@@ -52,7 +52,9 @@
                         <select name="kategori" id="kategori" class="form-control">
                             <option value="">-- Pilih Kategori --</option>
                             <?php foreach ($kategori as $k): ?>
-                                <option value="<?= $k['id_kategori']; ?>"><?= esc($k['nama_kategori']); ?></option>
+                                <option value="<?= $k['id_kategori']; ?>" <?= ($k['id_kategori'] == $data_buku['id_kategori']) ? 'selected' : ''; ?>>
+                                    <?= esc($k['nama_kategori']); ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                         </div>
@@ -69,7 +71,9 @@
                         <select name="rak" id="rak" class="form-control">
                             <option value="">-- Pilih Rak --</option>
                             <?php foreach ($rak as $r): ?>
-                                <option value="<?= $r['id_rak']; ?>"><?= esc($r['nama_rak']); ?></option>
+                                <option value="<?= $r['id_rak']; ?>" <?= ($r['id_rak'] == $data_buku['id_rak']) ? 'selected' : ''; ?>>
+                                    <?= esc($r['nama_rak']); ?>
+                                </option>
                             <?php endforeach; ?>
                         </select>
                         </div>
