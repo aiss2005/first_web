@@ -213,6 +213,16 @@ class Peminjaman extends BaseController
         echo view('Backend/Transaksi/detail-transaksi', $data);
         echo view('Backend/Template/footer', $data);
     }
+
+    public function selesai($no_peminjaman)
+    {
+        $db = \Config\Database::connect();
+        $db->table('tbl_peminjaman')->where('no_peminjaman', $no_peminjaman)
+           ->update(['status_transaksi' => 'selesai']);
+        return redirect()->to('/peminjaman/data-transaksi-peminjaman')
+            ->with('success', 'Transaksi peminjaman telah selesai.');
+
+    }
 }
 
 ?>

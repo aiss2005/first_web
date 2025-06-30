@@ -46,6 +46,11 @@
                             <span class="label label-danger"><?= $data['status_ambil_buku']; ?></span>
                           <?php } ?>
                         </p>
+                        <p><?php if($data['status_transaksi'] == 'Berjalan'){ ?>
+                            <span class="btn btn-succes"><a href="<?= base_url('/peminjaman/selesai-transaksi-peminjaman/') .$data['no_peminjaman']; ?>">Tandai Selesai</a></span>
+                          <?php } else { ?>
+                            
+                          <?php } ?></p>
                       <?php } ?>
                     </div>
                 </div>
